@@ -1,12 +1,16 @@
 package ru.netology.nmedia
 
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
 import ru.netology.nmedia.databinding.ActivityMainBinding
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.viewModel.PostViewModel
 
 class MainActivity : AppCompatActivity() {
+
+    private val viewModel by viewModels<PostViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -14,24 +18,16 @@ class MainActivity : AppCompatActivity() {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val post = Post(
-            id = 0L,
-            likes = 10,
-            reposts = 5,
-            views = 30,
-        )
+        viewModel.data.observe(this) { post ->
+            binding.render(post)
+        }
 
-        binding.render(post)
         binding.buttonLikes.setOnClickListener {
-            post.likedByMe = !post.likedByMe
-            binding.buttonLikes.setImageResource(getButtonLikesIconResId(post.likedByMe))
-            post.likes = post.likes + if (post.likedByMe) 1 else -1
-            binding.countLikes.text = getFormattedNumber(post.likes)
+            viewModel.onbuttonLikesClicked()
         }
 
         binding.buttonReposts.setOnClickListener {
-            post.reposts += 1
-            binding.countReposts.text = getFormattedNumber(post.reposts)
+            viewModel.onbuttonRepostsClicked()
         }
 
     }
