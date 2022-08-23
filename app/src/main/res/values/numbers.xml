@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="numberOnes" translatable="false">%.0f</string>
+    <string name="numberThousands" translatable="false">%.0fK</string>
+    <string name="numberThousandsAndHundreds" translatable="false">%.1fK</string>
+    <string name="numberMillions" translatable="false">%.0fM</string>
+    <string name="numberMillionsAndThousands" translatable="false">%.1fM</string>
+</resources>
