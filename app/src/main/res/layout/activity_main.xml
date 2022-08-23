@@ -12,9 +12,10 @@
         android:layout_width="@dimen/post_avatar_size"
         android:layout_height="@dimen/post_avatar_size"
         android:contentDescription="@string/netology"
+        android:padding="@dimen/common_spacing"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_netology_logo" />
+        app:srcCompat="@drawable/ic_netology_logo_48dp" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/authorName"
@@ -46,8 +47,6 @@
         android:id="@+id/options"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_options_24dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -81,7 +80,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/countViews"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/number_width"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/common_spacing"
         android:ellipsize="end"
@@ -102,17 +101,17 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/countLikes"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/number_width"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/common_spacing"
         android:ellipsize="end"
         android:singleLine="true"
         android:text="@string/countLikes"
-        app:layout_constraintStart_toEndOf="@id/iconLikes"
+        app:layout_constraintStart_toEndOf="@id/buttonLikes"
         app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/iconLikes"
+        android:id="@+id/buttonLikes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/common_spacing"
@@ -123,17 +122,17 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/countReposts"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/number_width"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/common_spacing"
         android:ellipsize="end"
         android:singleLine="true"
         android:text="@string/countReposts"
-        app:layout_constraintStart_toEndOf="@id/iconReposts"
+        app:layout_constraintStart_toEndOf="@id/buttonReposts"
         app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/iconReposts"
+        android:id="@+id/buttonReposts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/common_spacing"
