@@ -6,6 +6,7 @@ import ru.netology.nmedia.adapter.PostInteractionListener
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.data.impl.InMemoryPostRepository
 import ru.netology.nmedia.dto.Post
+import ru.netology.nmedia.util.SingleLiveEvent
 
 class PostViewModel : ViewModel(), PostInteractionListener {
 
@@ -13,7 +14,15 @@ class PostViewModel : ViewModel(), PostInteractionListener {
 
     val data by repository::data
 
+    val sharePostContent = SingleLiveEvent<String>()
+    val navigateToPostContentScreenEvent = SingleLiveEvent<Unit>()
+    val playVideoURL = SingleLiveEvent<String>()
+
     val currentPost = MutableLiveData<Post?>(null)
+
+    fun onAddClicked() {
+        navigateToPostContentScreenEvent.call()
+    }
 
     fun onButtonSaveClicked(content: String) {
         if (content.isBlank()) return
@@ -25,7 +34,8 @@ class PostViewModel : ViewModel(), PostInteractionListener {
             author = "Me",
             content = content,
             published = "today",
-        )
+
+            )
         repository.save(post)
         currentPost.value = null
     }
@@ -33,17 +43,19 @@ class PostViewModel : ViewModel(), PostInteractionListener {
     override fun onButtonLikesClicked(post: Post) =
         repository.like(post.id)
 
-    override fun onButtonRepostsClicked(post: Post) =
-        repository.repost(post.id)
+    override fun onButtonRepostsClicked(post: Post) {
+        sharePostContent.value = post.content
+    }
+
+    override fun onButtonPlayVideoClicked(post: Post) {
+        playVideoURL.value = post.videoURL
+    }
 
     override fun onButtonRemoveClicked(post: Post) =
         repository.remove(post.id)
 
     override fun onButtonEditClicked(post: Post) {
         currentPost.value = post
-    }
-
-    override fun onButtonCancelClicked() {
-        currentPost.value = null
+        navigateToPostContentScreenEvent.call()
     }
 }

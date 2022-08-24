@@ -1,6 +1,7 @@
 package ru.netology.nmedia.adapter
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
 import androidx.annotation.DrawableRes
@@ -59,6 +60,9 @@ internal class PostsAdapter(
         init {
             binding.buttonLikes.setOnClickListener { listener.onButtonLikesClicked(post) }
             binding.buttonReposts.setOnClickListener { listener.onButtonRepostsClicked(post) }
+            binding.buttonPlayVideo.setOnClickListener { listener.onButtonPlayVideoClicked(post) }
+            binding.videoContent.setOnClickListener { listener.onButtonPlayVideoClicked(post) }
+            binding.options.setOnClickListener { popupMenu.show() }
         }
 
         fun bind(post: Post) {
@@ -72,13 +76,10 @@ internal class PostsAdapter(
                 authorName.text = post.author
                 postDate.text = post.published
                 buttonLikes.isChecked = post.likedByMe
-                options.setOnClickListener { popupMenu.show() }
+                groupVideo.visibility =
+                    if (post.videoURL.isBlank()) View.GONE else View.VISIBLE
             }
         }
-
-        @DrawableRes
-        private fun getButtonLikesIconResId(liked: Boolean) =
-            if (liked) R.drawable.ic_likes_red_24dp else R.drawable.ic_likes_24dp
 
         private fun getFormattedNumber(number: Int): String {
 

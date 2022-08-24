@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
         android:checkable="false"
-        android:contentDescription="Options"
+        android:contentDescription="@string/options"
         app:icon="@drawable/ic_options_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -72,13 +72,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerBarrier" />
 
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/videoContent"
+        android:layout_width="match_parent"
+        android:layout_height="128dp"
+        android:padding="@dimen/maximal_spacing"
+        app:layout_constraintTop_toBottomOf="@+id/mainContent"
+        app:srcCompat="@drawable/ic_youtube_logo" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/buttonPlayVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="@+id/videoContent"
+        app:layout_constraintStart_toStartOf="@+id/videoContent"
+        app:layout_constraintEnd_toEndOf="@+id/videoContent"
+        app:layout_constraintTop_toTopOf="@+id/videoContent"
+        app:layout_constraintVertical_bias="0.423"
+        app:srcCompat="@drawable/ic_baseline_play_arrow_24dp" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupVideo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="videoContent,buttonPlayVideo" />
+
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/footerBarrier"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:barrierDirection="bottom"
         app:barrierMargin="@dimen/common_spacing"
-        app:constraint_referenced_ids="mainContent" />
+        app:constraint_referenced_ids="mainContent,videoContent" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/iconViews"

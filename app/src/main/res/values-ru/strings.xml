@@ -12,4 +12,6 @@
     <string name="views">Просмотры</string>
     <string name="likes">Понравилось</string>
     <string name="reposts">Поделилось</string>
+    <string name="options">Действия</string>
+    <string name="chooser_share_post">Поделиться</string>
 </resources>
