@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/common_spacing">
+
+    <ImageView
+        android:id="@+id/avatar"
+        android:layout_width="@dimen/post_avatar_size"
+        android:layout_height="@dimen/post_avatar_size"
+        android:contentDescription="@string/netology"
+        android:padding="@dimen/common_spacing"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_netology_logo_48dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/authorName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:layout_marginEnd="@dimen/common_spacing"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/authorName"
+        app:layout_constraintBottom_toTopOf="@+id/postDate"
+        app:layout_constraintEnd_toStartOf="@+id/options"
+        app:layout_constraintStart_toEndOf="@+id/avatar"
+        app:layout_constraintTop_toTopOf="@+id/avatar"
+        app:layout_constraintVertical_chainStyle="packed" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/postDate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/postDate"
+        app:layout_constraintBottom_toBottomOf="@+id/avatar"
+        app:layout_constraintStart_toStartOf="@+id/authorName"
+        app:layout_constraintTop_toBottomOf="@+id/authorName" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/options"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_options_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/headerBarrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:barrierMargin="@dimen/common_spacing"
+        app:constraint_referenced_ids="avatar, postDate, options" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/mainContent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:text="@string/content_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerBarrier" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/footerBarrier"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:barrierDirection="bottom"
+        app:barrierMargin="@dimen/common_spacing"
+        app:constraint_referenced_ids="mainContent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/countViews"
+        android:layout_width="@dimen/number_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/countViews"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/iconViews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/common_spacing"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_views_24dp"
+        app:layout_constraintEnd_toStartOf="@+id/countViews"
+        app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/countLikes"
+        android:layout_width="@dimen/number_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/countLikes"
+        app:layout_constraintStart_toEndOf="@id/buttonLikes"
+        app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/buttonLikes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/common_spacing"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_likes_24dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/countReposts"
+        android:layout_width="@dimen/number_width"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:ellipsize="end"
+        android:singleLine="true"
+        android:text="@string/countReposts"
+        app:layout_constraintStart_toEndOf="@id/buttonReposts"
+        app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/buttonReposts"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_spacing"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_reposts_24dp"
+        app:layout_constraintStart_toEndOf="@id/countLikes"
+        app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
