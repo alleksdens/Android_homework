@@ -8,4 +8,10 @@
     <string name="countViews" translatable="false">10</string>
     <string name="countLikes" translatable="false">5</string>
     <string name="countReposts" translatable="false">11</string>
+    <string name="menu_remove">Remove</string>
+    <string name="post_text">Post text...</string>
+    <string name="description_post_save">Save...</string>
+    <string name="menu_edit">Edit</string>
+    <string name="edit_message">Edit message</string>
+    <string name="description_edit_cancel">Cancel</string>
 </resources>

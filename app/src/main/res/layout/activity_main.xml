@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -9,8 +9,110 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/postsRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@id/previousTop"
+        app:layout_constraintTop_toTopOf="parent"
         tools:listitem="@layout/post" />
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/toolsTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="contentEdit, buttonSave" />
+
+    <EditText
+        android:id="@+id/contentEdit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:hint="@string/post_text"
+        android:importantForAutofill="no"
+        android:inputType="textMultiLine"
+        android:padding="@dimen/common_spacing"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/buttonSave"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/toolsTop" />
+
+    <ImageButton
+        android:id="@+id/buttonSave"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/description_post_save"
+        app:layout_constraintBottom_toBottomOf="@id/contentEdit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/contentEdit"
+        app:layout_constraintTop_toTopOf="@id/contentEdit"
+        app:srcCompat="@drawable/ic_baseline_save_48dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/previousTop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="icEdit,editMessage" />
+
+    <ImageButton
+        android:id="@+id/icEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/description_post_save"
+        android:padding="@dimen/common_spacing"
+        app:layout_constraintBottom_toBottomOf="@id/toolsTop"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/previousTop"
+        app:srcCompat="@drawable/ic_baseline_edit_24dp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/editMessage"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:padding="@dimen/minimal_spacing"
+        android:text="@string/edit_message"
+        android:textColor="#2196F3"
+        android:textSize="@dimen/minimal_text"
+        app:layout_constraintBottom_toTopOf="@+id/previousText"
+        app:layout_constraintEnd_toStartOf="@id/buttonSave"
+        app:layout_constraintStart_toEndOf="@id/icEdit"
+        app:layout_constraintTop_toTopOf="@id/icEdit" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/previousText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:hint="Edit text"
+        android:inputType="textMultiLine"
+        android:padding="@dimen/minimal_spacing"
+        android:textSize="@dimen/minimal_text"
+        app:layout_constraintBottom_toBottomOf="@id/icEdit"
+        app:layout_constraintEnd_toStartOf="@id/buttonSave"
+        app:layout_constraintStart_toEndOf="@id/icEdit"
+        app:layout_constraintTop_toBottomOf="@id/editMessage" />
+
+    <ImageButton
+        android:id="@+id/buttonCancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/description_edit_cancel"
+        android:padding="@dimen/common_spacing"
+        app:layout_constraintBottom_toBottomOf="@id/toolsTop"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/previousText"
+        app:layout_constraintTop_toTopOf="@id/previousTop"
+        app:srcCompat="@drawable/ic_baseline_close_24dp" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/groupEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:constraint_referenced_ids="icEdit,editMessage,previousText,buttonCancel" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
