@@ -3,6 +3,7 @@ package ru.netology.nmedia.viewModel
 import androidx.lifecycle.ViewModel
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.data.impl.InMemoryPostRepository
+import ru.netology.nmedia.dto.Post
 
 
 class PostViewModel : ViewModel() {
@@ -11,8 +12,8 @@ class PostViewModel : ViewModel() {
 
     val data by repository::data
 
-    fun onbuttonLikesClicked() = repository.like()
+    fun onButtonLikesClicked(post: Post) = repository.like(post.id)
 
-    fun onbuttonRepostsClicked() = repository.repost()
+    fun onButtonRepostsClicked(post: Post) = repository.repost(post.id)
 
 }
