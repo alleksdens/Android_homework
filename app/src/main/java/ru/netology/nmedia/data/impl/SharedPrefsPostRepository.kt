@@ -2,7 +2,6 @@ package ru.netology.nmedia.data.impl
 
 import android.app.Application
 import android.content.Context
-import android.util.JsonReader
 import androidx.core.content.edit
 import androidx.lifecycle.MutableLiveData
 import kotlinx.serialization.decodeFromString
@@ -10,8 +9,6 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import ru.netology.nmedia.data.PostRepository
 import ru.netology.nmedia.dto.Post
-import java.text.SimpleDateFormat
-import java.util.*
 import kotlin.properties.Delegates
 
 class SharedPrefsPostRepository(
@@ -75,6 +72,10 @@ class SharedPrefsPostRepository(
 
     override fun save(post: Post) {
         if (post.id == PostRepository.NEW_POST_ID) insert(post) else update(post)
+    }
+
+    override fun getById(postId: Long): Post? {
+        TODO("Not yet implemented")
     }
 
     private fun insert(post: Post) {

@@ -6,7 +6,9 @@ import ru.netology.nmedia.dto.Post
 import java.text.SimpleDateFormat
 import java.util.*
 
-class InMemoryPostRepository : PostRepository {
+object InMemoryPostRepository : PostRepository {
+
+    private const val GENERATED_POSTS_AMOUNT = 15
 
     private var nextId = GENERATED_POSTS_AMOUNT.toLong()
 
@@ -21,10 +23,10 @@ class InMemoryPostRepository : PostRepository {
                 id = index + 1L,
                 author = "Автор №$index",
                 content = "Текст поста $index",
+                published = SimpleDateFormat("dd.MM.yyyy hh:mm").format(Date()),
                 likes = 5 + (0..10).random(),
                 reposts = 10 + (0..10).random(),
                 views = 33 + (10..100).random(),
-                published = SimpleDateFormat("dd.MM.yyyy hh:mm").format(Date()),
                 videoURL = if (index % 3 == 0) "https://www.youtube.com/watch?v=6petdXgPDOM" else "",
             )
         }
@@ -44,7 +46,7 @@ class InMemoryPostRepository : PostRepository {
         data.value = posts.map {
             if (it.id != postId) it
             else it.copy(
-                reposts = it.reposts + 1
+                reposts = it.reposts + 10
             )
         }
     }
@@ -69,7 +71,7 @@ class InMemoryPostRepository : PostRepository {
         }
     }
 
-    private companion object {
-        const val GENERATED_POSTS_AMOUNT = 15
+    override fun getById(postId: Long): Post? {
+        return posts.find { it.id == postId }
     }
 }

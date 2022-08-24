@@ -9,7 +9,7 @@ import ru.netology.nmedia.data.impl.InMemoryPostRepository
 import ru.netology.nmedia.dto.Post
 import ru.netology.nmedia.util.SingleLiveEvent
 
-class PostViewModel(
+class SinglePostViewModel(
     application: Application
 ) : AndroidViewModel(application),
     PostInteractionListener {
@@ -18,20 +18,15 @@ class PostViewModel(
 
     val data by repository::data
 
-    val sharePostContent = SingleLiveEvent<String>()
-    val navigateToEditContentScreenEvent = SingleLiveEvent<String>()
-    val navigateToViewContentScreenEvent = SingleLiveEvent<Long>()
-    val playVideoURL = SingleLiveEvent<String>()
-
     val currentPost = MutableLiveData<Post?>(null)
 
-    fun setCurrentPost(postId: Long) {
-        currentPost.value = repository.getById(postId)
-    }
+    val sharePostContent = SingleLiveEvent<String>()
+    val navigateToEditContentScreenEvent = SingleLiveEvent<String>()
+    val playVideoURL = SingleLiveEvent<String>()
+    val removePost = SingleLiveEvent<Unit>()
 
-    fun onAddClicked() {
-        navigateToEditContentScreenEvent.call()
-    }
+    fun getPostById(postId: Long) : Post? =
+        repository.getById(postId)
 
     fun onButtonSaveClicked(content: String) {
         if (content.isBlank()) return
@@ -49,11 +44,6 @@ class PostViewModel(
         currentPost.value = null
     }
 
-    override fun onButtonLikesClicked(post: Post) {
-        repository.like(post.id)
-        setCurrentPost(post.id)
-    }
-
     override fun onButtonRepostsClicked(post: Post) {
         sharePostContent.value = post.content
     }
@@ -63,12 +53,16 @@ class PostViewModel(
     }
 
     override fun onContentClicked(post: Post) {
-        currentPost.value = post
-        navigateToViewContentScreenEvent.value = post.id
+
     }
 
-    override fun onButtonRemoveClicked(post: Post) =
+    override fun onButtonLikesClicked(post: Post) =
+        repository.like(post.id)
+
+    override fun onButtonRemoveClicked(post: Post) {
         repository.remove(post.id)
+        removePost.value = Unit
+    }
 
     override fun onButtonEditClicked(post: Post) {
         currentPost.value = post
