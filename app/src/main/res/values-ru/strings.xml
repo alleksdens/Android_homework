@@ -9,4 +9,7 @@
     <string name="menu_edit">Редактировать</string>
     <string name="edit_message">Редактирование сообщения</string>
     <string name="description_edit_cancel">Отмена</string>
+    <string name="views">Просмотры</string>
+    <string name="likes">Понравилось</string>
+    <string name="reposts">Поделилось</string>
 </resources>

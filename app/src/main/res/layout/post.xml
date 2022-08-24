@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="@dimen/common_spacing">
@@ -41,12 +42,15 @@
         app:layout_constraintStart_toStartOf="@+id/authorName"
         app:layout_constraintTop_toBottomOf="@+id/authorName" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/options"
+        style="@style/Widget.AppTheme.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_options_24dp"
+        android:checkable="false"
+        android:contentDescription="Options"
+        app:icon="@drawable/ic_options_24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -76,67 +80,41 @@
         app:barrierMargin="@dimen/common_spacing"
         app:constraint_referenced_ids="mainContent" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/countViews"
-        android:layout_width="@dimen/number_width"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/common_spacing"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:text="@string/countViews"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/iconViews"
+        style="@style/Widget.AppTheme.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/common_spacing"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_views_24dp"
-        app:layout_constraintEnd_toStartOf="@+id/countViews"
-        app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
+        android:checkable="false"
+        android:contentDescription="@string/views"
+        app:icon="@drawable/ic_views_24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/footerBarrier"
+        tools:text="10K" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/countLikes"
-        android:layout_width="@dimen/number_width"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/common_spacing"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:text="@string/countLikes"
-        app:layout_constraintStart_toEndOf="@id/buttonLikes"
-        app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonLikes"
+        style="@style/Widget.AppTheme.LikeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/common_spacing"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_likes_24dp"
+        android:checkable="true"
+        android:contentDescription="@string/likes"
+        app:backgroundTint="@android:color/transparent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
+        app:layout_constraintTop_toBottomOf="@id/footerBarrier"
+        tools:text="10K" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/countReposts"
-        android:layout_width="@dimen/number_width"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/common_spacing"
-        android:ellipsize="end"
-        android:singleLine="true"
-        android:text="@string/countReposts"
-        app:layout_constraintStart_toEndOf="@id/buttonReposts"
-        app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
-
-    <androidx.appcompat.widget.AppCompatImageButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonReposts"
+        style="@style/Widget.AppTheme.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/common_spacing"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_reposts_24dp"
-        app:layout_constraintStart_toEndOf="@id/countLikes"
-        app:layout_constraintTop_toBottomOf="@id/footerBarrier" />
+        android:checkable="false"
+        android:contentDescription="@string/reposts"
+        app:icon="@drawable/ic_reposts_24dp"
+        app:layout_constraintStart_toEndOf="@id/buttonLikes"
+        app:layout_constraintTop_toBottomOf="@id/footerBarrier"
+        tools:text="10K" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

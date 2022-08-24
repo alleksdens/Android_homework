@@ -14,4 +14,7 @@
     <string name="menu_edit">Edit</string>
     <string name="edit_message">Edit message</string>
     <string name="description_edit_cancel">Cancel</string>
+    <string name="views">Views</string>
+    <string name="likes">Likes</string>
+    <string name="reposts">Reposts</string>
 </resources>

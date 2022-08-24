@@ -65,13 +65,13 @@ internal class PostsAdapter(
             this.post = post
 
             with(binding) {
-                countLikes.text = getFormattedNumber(post.likes)
-                countReposts.text = getFormattedNumber(post.reposts)
-                countViews.text = getFormattedNumber(post.views)
+                buttonLikes.text = getFormattedNumber(post.likes)
+                buttonReposts.text = getFormattedNumber(post.reposts)
+                iconViews.text = getFormattedNumber(post.views)
                 mainContent.text = post.content
                 authorName.text = post.author
                 postDate.text = post.published
-                buttonLikes.setImageResource(getButtonLikesIconResId(post.likedByMe))
+                buttonLikes.isChecked = post.likedByMe
                 options.setOnClickListener { popupMenu.show() }
             }
         }
@@ -122,10 +122,7 @@ internal class PostsAdapter(
                     getTruncatedNumber(6, 1)
                 )
             }
-
         }
-
-
     }
 
     private object DiffCallback : DiffUtil.ItemCallback<Post>() {
@@ -135,7 +132,5 @@ internal class PostsAdapter(
 
         override fun areContentsTheSame(oldItem: Post, newItem: Post) =
             oldItem == newItem
-
     }
-
 }
