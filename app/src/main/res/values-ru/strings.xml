@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">НМедиа</string>
+    <string name="nmedia">НМедиа!</string>
+    <string name="netology">Нетология</string>
+    <string name="menu_remove">Удалить</string>
+    <string name="post_text">Введите текст...</string>
+    <string name="description_post_save">Записать...</string>
+    <string name="menu_edit">Редактировать</string>
+    <string name="edit_message">Редактирование сообщения</string>
+    <string name="description_edit_cancel">Отмена</string>
+    <string name="views">Просмотры</string>
+    <string name="likes">Понравилось</string>
+    <string name="reposts">Поделилось</string>
+    <string name="options">Действия</string>
+    <string name="chooser_share_post">Поделиться</string>
+</resources>
