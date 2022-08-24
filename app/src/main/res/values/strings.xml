@@ -1,4 +1,20 @@
 <resources>
     <string name="app_name">NMedia</string>
     <string name="nmedia">NMedia!</string>
+    <string name="netology">Netology</string>
+    <string name="content_text" translatable="false">Привет, это новая Нетология! Когда-то Нетология начиналась с интенсивов по онлайн-маркетингу. Затем появились курсы по дизайну, разработке, аналитике и управлению. Мы растём сами и помогаем расти студентам: от новичков до уверенных профессионалов. Но самое важное остаётся с нами: мы верим, что в каждом уже есть сила, которая заставляет хотель больше, целиться выше, бежать быстрее. Наша цель - помочь встать на путь роста и начать цепочку перемен → <a href="https://netolo.gy/h3m">https://netolo.gy/h3m</a></string>
+    <string name="authorName" translatable="false">Нетология. Университет интернет-профессионалов.</string>
+    <string name="postDate" translatable="false">23 августа в 10:31</string>
+    <string name="countViews" translatable="false">10</string>
+    <string name="countLikes" translatable="false">5</string>
+    <string name="countReposts" translatable="false">11</string>
+    <string name="menu_remove">Remove</string>
+    <string name="post_text">Post text...</string>
+    <string name="description_post_save">Save...</string>
+    <string name="menu_edit">Edit</string>
+    <string name="edit_message">Edit message</string>
+    <string name="description_edit_cancel">Cancel</string>
+    <string name="views">Views</string>
+    <string name="likes">Likes</string>
+    <string name="reposts">Reposts</string>
 </resources>
